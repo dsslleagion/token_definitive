@@ -12,7 +12,7 @@ export const Login = ({ navigation }: any) => {
     const [login, setLogin] = useState('')
     const [senha, setSenha] = useState('')
     const [error, setError] = useState(false)
-    const { isLoggedIn, setLogIn, setUser }: any = useContext(GlobalContext)
+    const { isLoggedIn, setLogIn, setUser, setToken }: any = useContext(GlobalContext)
 
     function logar() {
         const url = apiurl + "/login/login";
@@ -32,6 +32,7 @@ export const Login = ({ navigation }: any) => {
                 }
                 else {
                     setError(false)
+                    setToken(data.token)
                     setUser(data.user)
                     setLogIn(true)
                 }
